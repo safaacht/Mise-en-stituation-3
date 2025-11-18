@@ -13,13 +13,13 @@ changeColor.addEventListener("click",()=>{
 
 
 // On click, change all divs’ background colors  (challenge3)
-const changeAll=document.getElementById("main");
-changeAll.addEventListener("click",()=>{
-  const innerDivs=changeAll.querySelector("div");
-  innerDivs.forEach(div=>
-    div.style.background="red" 
-  )
-})
+// const changeAll=document.getElementById("main");
+// changeAll.addEventListener("click",()=>{
+//   const innerDivs=changeAll.querySelector("div");
+//   innerDivs.forEach(div=>
+//     div.style.background="red" 
+//   )
+// })
 
 // On click, change this div’s text content (challenge4)
 const changeText=document.querySelector(".challenge4");
@@ -73,12 +73,12 @@ form1.addEventListener("submit",(e)=>{
 // On hover, increase this div’s size smoothly (challenge8)
 const sizing=document.querySelector(".challenge8")
 sizing.addEventListener("mouseover",()=>{
-  sizing.style.width="200px";
+  sizing.style.width="450px";
   sizing.style.height="100px";
 })
 
 sizing.addEventListener("mouseout",()=>{
-  sizing.style.width="170px";
+  sizing.style.width="400px";
   sizing.style.height="50px";
 })
 
@@ -99,7 +99,148 @@ reset.addEventListener("mouseout",()=>{
 
 
 // On click, alert “Hello World” (challenge16)
-const msgAlert=document.querySelector(".challenge16") 
+const msgAlert=document.querySelector(".challenge16") ;
 msgAlert.addEventListener("click",()=>{
   alert("HELLO WORLD!");
 })
+
+
+
+// On click, log this div’s ID to the console (challenge17)
+const affichageId=document.querySelector(".challenge17");
+
+affichageId.addEventListener("click",()=>{
+  console.log(affichageId.id);
+  
+})
+
+// Add two inputs inside; on change, show their sum (challenge18)
+const div=document.querySelector(".challenge18");
+const input3 =document.createElement('input');
+const input4=document.createElement('input');
+const parag=document.createElement("p")
+div.appendChild(input3);
+div.appendChild(input4);
+div.appendChild(parag);
+
+function sum(){
+const value1=parseFloat(input3.value)||0;
+const value2=parseFloat(input4.value)||0;
+const summ=value1+value2;
+
+parag.textContent=`Sum:${summ}`
+
+console.log(`Sum:${summ}`);
+
+}
+
+
+input3.addEventListener("change",sum);
+input4.addEventListener("change",sum);
+
+
+
+
+// Add a select menu; show selected value below it (challenge19)
+const divs=document.querySelector(".challenge19");
+divs.innerHTML=`
+<label  type="menu">Menu:</label>
+<select id= "menu">
+<option>--Chose one--</option>
+<option value=1>1</option>
+<option value=2>2</option>
+<option value=3>3</option>
+</select>
+<p id="choix"></p>
+`
+
+
+const menu=divs.querySelector("#menu")
+const choix=divs.querySelector("#choix");
+
+menu.addEventListener("change",()=>{
+ const selected=menu.value;
+ choix.textContent=`Selected:${selected}`
+
+})
+
+
+
+
+// Add a checkbox; when checked, change div’s border color (challenge20)
+const divv=document.querySelector(".challenge20");
+const checkbox = document.createElement("input");
+ checkbox.type="checkbox";
+ checkbox.id="checkbox"
+
+
+ divv.appendChild(checkbox);
+
+ checkbox.addEventListener("change",()=>{
+  if(checkbox.checked){
+     divv.style.border="2px solid red"; 
+  }else{
+    divv.style.border=""
+  }
+
+ })
+
+
+//  Create a list (<ul>); on button click, add a new item (challenge21)
+document.addEventListener("DOMContentLoaded",()=>{
+
+
+const liste=document.querySelector(".challenge21");
+const ul=document.createElement("ul")
+ul.innerHTML=`
+<li>1</li>
+<li>2</li>
+
+`
+
+
+const btn=document.createElement("button");
+btn.id="btn";
+btn.textContent="Add";
+btn.className="btn";
+
+liste.appendChild(ul);
+liste.appendChild(btn);
+
+
+
+
+
+btn.addEventListener("click",()=>{
+  const currrentPos=ul.querySelectorAll("li").length;
+console.log("currrentPos");
+
+
+  const newLi=document.createElement("li");
+  newLi.textContent=currrentPos+1;
+
+  ul.appendChild(newLi);
+});
+
+})
+
+
+// On scroll, show “Scrolling...” text inside this div (challenge23)
+const scrolling=document.querySelector(".challenge23")
+
+
+function hideScrollingText() {
+    scrolling.textContent = "div23";
+}
+
+ window.addEventListener("scroll",()=>{
+  scrolling.textContent="Scrolling...";
+
+
+    clearTimeout(window.scrollTimeout);
+    window.scrollTimeout = setTimeout(hideScrollingText, 500);
+ });
+
+
+
+    
